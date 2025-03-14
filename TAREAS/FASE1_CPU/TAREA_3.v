@@ -584,18 +584,18 @@ wire [31:0] w5;    //: /sn:0 /dp:1 {0}(676,347)(718,347){1}
 wire [31:0] w9;    //: /sn:0 {0}(1052,299)(1018,299){1}
 //: enddecls
 
-  //: dip g4 (Write) @(637,276) /sn:0 /R:1 /w:[ 1 ] /st:5
+  //: dip g4 (Write) @(637,276) /sn:0 /R:1 /w:[ 1 ] /st:3
   led g8 (.I(SignExtOut));   //: @(893,376) /sn:0 /R:3 /w:[ 1 ] /type:2
-  //: dip g3 (w2) @(639,201) /sn:0 /R:1 /w:[ 0 ] /st:5
+  //: dip g3 (w2) @(639,201) /sn:0 /R:1 /w:[ 0 ] /st:1
   //: switch g2 (w1) @(811,461) /sn:0 /R:1 /w:[ 0 ] /st:0
   clock g1 (.Z(w8));   //: @(687,460) /sn:0 /w:[ 0 ] /omega:1500 /phi:0 /duty:50
   led g10 (.I(w9));   //: @(1059,299) /sn:0 /R:3 /w:[ 0 ] /type:2
-  //: dip g6 (w5) @(638,347) /sn:0 /R:1 /w:[ 0 ] /st:15
+  //: dip g6 (w5) @(638,347) /sn:0 /R:1 /w:[ 0 ] /st:2
   led g9 (.I(Zero));   //: @(1061,256) /sn:0 /R:3 /w:[ 1 ] /type:2
-  //: dip g7 (w6) @(639,379) /sn:0 /R:1 /w:[ 0 ] /st:65526
-  //: switch g12 (w7) @(780,125) /sn:0 /R:3 /w:[ 0 ] /st:1
-  //: dip g14 (w0) @(967,198) /sn:0 /w:[ 0 ] /st:0
-  //: dip g5 (w4) @(637,236) /sn:0 /R:1 /w:[ 0 ] /st:0
+  //: dip g7 (w6) @(639,379) /sn:0 /R:1 /w:[ 0 ] /st:4095
+  //: switch g12 (w7) @(780,125) /sn:0 /R:3 /w:[ 0 ] /st:0
+  //: dip g14 (w0) @(967,198) /sn:0 /w:[ 0 ] /st:2
+  //: dip g5 (w4) @(637,236) /sn:0 /R:1 /w:[ 0 ] /st:2
   //: switch g11 (w3) @(659,314) /sn:0 /w:[ 0 ] /st:0
   READ g0 (.RegWrite(w7), .SignExtIn(w6), .WriteData(w5), .RegDst(w3), .Write(Write), .Read2(w4), .Read1(w2), .clr(w1), .clk(w8), .SignExtOut(SignExtOut), .Data2(Data2), .Data1(Data1));   //: @(719, 161) /sz:(128, 255) /sn:0 /p:[ Ti0>1 Li0>1 Li1>1 Li2>1 Li3>0 Li4>1 Li5>1 Bi0>1 Bi1>1 Ro0<0 Ro1<0 Ro2<0 ]
   EXE g13 (.ALU_OP(w0), .B(Data2), .A(Data1), .ALU_RES(w9), .Zero(Zero));   //: @(918, 233) /sz:(99, 89) /sn:0 /p:[ Ti0>1 Li0>1 Li1>1 Ro0<1 Ro1<0 ]
