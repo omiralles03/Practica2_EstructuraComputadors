@@ -395,26 +395,26 @@ wire [31:0] Data2;    //: /sn:0 {0}(848,301)(886,301){1}
 wire [4:0] w4;    //: /sn:0 /dp:1 {0}(675,236)(718,236){1}
 wire [4:0] Write;    //: /sn:0 /dp:1 {0}(718,276)(675,276){1}
 wire w3;    //: /sn:0 {0}(676,314)(718,314){1}
-wire w0;    //: /sn:0 {0}(765,447)(765,417){1}
 wire [31:0] SignExtOut;    //: /sn:0 {0}(848,376)(886,376){1}
 wire [31:0] Data1;    //: /sn:0 {0}(848,258)(886,258){1}
 wire w1;    //: /sn:0 {0}(811,447)(811,417){1}
+wire w8;    //: /sn:0 {0}(700,460)(765,460)(765,417){1}
 wire [4:0] w2;    //: /sn:0 /dp:1 {0}(677,201)(718,201){1}
 wire [31:0] w5;    //: /sn:0 /dp:1 {0}(676,347)(718,347){1}
 //: enddecls
 
   led g8 (.I(SignExtOut));   //: @(893,376) /sn:0 /R:3 /w:[ 1 ] /type:2
-  //: dip g4 (Write) @(637,276) /sn:0 /R:1 /w:[ 1 ] /st:0
-  //: dip g3 (w2) @(639,201) /sn:0 /R:1 /w:[ 0 ] /st:0
+  //: dip g4 (Write) @(637,276) /sn:0 /R:1 /w:[ 1 ] /st:5
+  //: dip g3 (w2) @(639,201) /sn:0 /R:1 /w:[ 0 ] /st:5
   //: switch g2 (w1) @(811,461) /sn:0 /R:1 /w:[ 0 ] /st:0
-  //: switch g1 (w0) @(765,461) /sn:0 /R:1 /w:[ 0 ] /st:0
+  clock g1 (.Z(w8));   //: @(687,460) /sn:0 /w:[ 0 ] /omega:1500 /phi:0 /duty:50
   led g10 (.I(Data2));   //: @(893,301) /sn:0 /R:3 /w:[ 1 ] /type:2
-  //: dip g6 (w5) @(638,347) /sn:0 /R:1 /w:[ 0 ] /st:0
+  //: dip g6 (w5) @(638,347) /sn:0 /R:1 /w:[ 0 ] /st:15
   led g9 (.I(Data1));   //: @(893,258) /sn:0 /R:3 /w:[ 1 ] /type:2
-  //: dip g7 (w6) @(639,379) /sn:0 /R:1 /w:[ 0 ] /st:0
-  //: switch g12 (w7) @(780,125) /sn:0 /R:3 /w:[ 0 ] /st:0
+  //: dip g7 (w6) @(639,379) /sn:0 /R:1 /w:[ 0 ] /st:65526
+  //: switch g12 (w7) @(780,125) /sn:0 /R:3 /w:[ 0 ] /st:1
   //: switch g11 (w3) @(659,314) /sn:0 /w:[ 0 ] /st:0
   //: dip g5 (w4) @(637,236) /sn:0 /R:1 /w:[ 0 ] /st:0
-  READ g0 (.RegWrite(w7), .SignExtIn(w6), .WriteData(w5), .RegDst(w3), .Write(Write), .Read2(w4), .Read1(w2), .clr(w1), .clk(w0), .SignExtOut(SignExtOut), .Data2(Data2), .Data1(Data1));   //: @(719, 161) /sz:(128, 255) /sn:0 /p:[ Ti0>1 Li0>1 Li1>1 Li2>1 Li3>0 Li4>1 Li5>1 Bi0>1 Bi1>1 Ro0<0 Ro1<0 Ro2<0 ]
+  READ g0 (.RegWrite(w7), .SignExtIn(w6), .WriteData(w5), .RegDst(w3), .Write(Write), .Read2(w4), .Read1(w2), .clr(w1), .clk(w8), .SignExtOut(SignExtOut), .Data2(Data2), .Data1(Data1));   //: @(719, 161) /sz:(128, 255) /sn:0 /p:[ Ti0>1 Li0>1 Li1>1 Li2>1 Li3>0 Li4>1 Li5>1 Bi0>1 Bi1>1 Ro0<0 Ro1<0 Ro2<0 ]
 
 endmodule
