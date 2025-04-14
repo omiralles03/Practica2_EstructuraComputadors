@@ -18,7 +18,6 @@ wire [31:0] w1;    //: /sn:0 /dp:1 {0}(459,389)(487,389){1}
 //: enddecls
 
   //: supply0 g8 (w4) @(470,352) /sn:0 /w:[ 0 ]
-  rom g4 (.A(w1), .D(Inst), .OE(w6));   //: @(521,388) /sn:0 /w:[ 3 1 1 ] /mem:"/home/omiralles03/Documents/Estructura de Computadors/Practica2_EstructuraComputadors/TAREAS/mult.mem"
   //: input g3 (clk) @(379,447) /sn:0 /w:[ 0 ]
   //: input g2 (PCNew) @(381,389) /sn:0 /w:[ 0 ]
   //: input g1 (Reset) @(379,328) /sn:0 /w:[ 0 ]
@@ -26,6 +25,7 @@ wire [31:0] w1;    //: /sn:0 /dp:1 {0}(459,389)(487,389){1}
   add g6 (.A(w1), .B(w0), .S(PCNext), .CI(w5), .CO(w13));   //: @(560,300) /sn:0 /R:1 /w:[ 5 1 1 1 0 ]
   //: joint g7 (w1) @(489, 389) /w:[ 2 4 1 -1 ]
   //: supply0 g9 (w5) @(571,273) /sn:0 /w:[ 0 ]
+  rom fetch_ROM (.A(w1), .D(Inst), .OE(w6));   //: @(521,388) /sn:0 /w:[ 3 1 1 ] /mem:"/home/omiralles03/Documents/Estructura de Computadors/Practica2_EstructuraComputadors/TAREAS/mult.mem"
   //: output g12 (Inst) @(591,387) /sn:0 /w:[ 0 ]
   //: supply0 g11 (w6) @(521,443) /sn:0 /w:[ 0 ]
   register g5 (.Q(w1), .D(PCNew), .EN(w4), .CLR(!Reset), .CK(clk));   //: @(449,389) /sn:0 /R:1 /w:[ 0 1 1 1 1 ]
