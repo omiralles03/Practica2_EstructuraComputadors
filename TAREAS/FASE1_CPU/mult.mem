@@ -1,0 +1,18 @@
+# 8c090064: lw $t1, 100($zero)
+# Opcode: 8c (lw)
+# Registres: $zero (base), $t1 (destí)
+# Offset: 0x64 (100 en decimal)
+# Acció: Carrega el valor de la memòria a l'adreça $zero + 100 = 0x64 en $t1.
+# Dada llegida: 0x00000001 (primer valor de la secció de dades).
+
+#    lw		lw	lw	and	  and
+00/ 8c090064 8c040065 8c050066 00008024 00008824
+#	slt	beq	add	 add	   j	
+05/ 0224402a 11000003 02058020 02298820 1000fffb\
+#	sw
+0a/ ac100067 
+#	beq
+0b/ 1000ffff
+
+# Adreces
+00000064/ 00000001 00000003 00000005 00000000
