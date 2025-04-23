@@ -1,0 +1,9 @@
+#    instruccions              comentari
+00/ 200f0003  # addi $t7, $zero, 3     ; inicialitza el contador
+01/ 8c090064  # lw $t1, 100($zero)     ; dades per fer AND i OR
+02/ 00008024  # and $s0, $zero, $zero  ; dummy AND
+03/ 00008825  # or  $s1, $zero, $zero  ; dummy OR
+04/ ac100067  # sw $s0, 103($zero)     ; guarda resultat dummy
+05/ 21efffff  # addi $t7, $t7, -1      ; decrementa el contador
+06/ 15e0fffa  # bne $t7, $zero, -6     ; si $t7 != 0, torna al lw
+07/ 00000000  # nop (final del bucle)

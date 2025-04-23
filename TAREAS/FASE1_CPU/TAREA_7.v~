@@ -86,36 +86,36 @@ module READ(Read2, Data1, clr, clk, RegWrite, Write, Read1, WriteData, SignExtOu
 output [31:0] Data2;    //: /sn:0 {0}(323,263)(353,263){1}
 input [4:0] Write;    //: /sn:0 {0}(69,242)(114,242){1}
 input [31:0] WriteData;    //: /sn:0 {0}(73,303)(148,303)(148,277)(174,277){1}
-output [31:0] SignExtOut;    //: /sn:0 /dp:1 {0}(314,483)(336,483){1}
+output [31:0] SignExtOut;    //: /sn:0 /dp:1 {0}(330,391)(352,391){1}
 output [31:0] Data1;    //: /sn:0 /dp:1 {0}(323,171)(354,171){1}
 input RegDst;    //: /sn:0 {0}(74,274)(130,274)(130,255){1}
 input clr;    //: /sn:0 {0}(241,97)(241,123){1}
-input RegWrite;    //: /sn:0 {0}(215,339)(215,307){1}
-input clk;    //: /sn:0 /dp:1 {0}(283,340)(283,307){1}
+input RegWrite;    //: /sn:0 {0}(215,333)(215,307){1}
+input clk;    //: /sn:0 {0}(283,335)(283,307){1}
 input [4:0] Read1;    //: /sn:0 {0}(73,156)(174,156){1}
 input [4:0] Read2;    //: /sn:0 {0}(71,196)(98,196){1}
 //: {2}(102,196)(174,196){3}
 //: {4}(100,198)(100,222)(114,222){5}
-input [15:0] SignExtIn;    //: /sn:0 {0}(122,484)(164,484){1}
+input [15:0] SignExtIn;    //: /sn:0 {0}(138,392)(180,392){1}
 wire [4:0] w6;    //: /sn:0 /dp:1 {0}(143,232)(174,232){1}
 //: enddecls
 
   //: input g8 (Read2) @(69,196) /sn:0 /w:[ 0 ]
   //: output g4 (Data1) @(351,171) /sn:0 /w:[ 1 ]
   //: input g3 (clr) @(241,95) /sn:0 /R:3 /w:[ 0 ]
-  //: input g2 (clk) @(283,342) /sn:0 /R:1 /w:[ 0 ]
-  //: input g1 (RegWrite) @(215,341) /sn:0 /R:1 /w:[ 0 ]
+  //: input g2 (clk) @(283,337) /sn:0 /R:1 /w:[ 0 ]
+  //: input g1 (RegWrite) @(215,335) /sn:0 /R:1 /w:[ 0 ]
   //: input g10 (Write) @(67,242) /sn:0 /w:[ 0 ]
   //: input g6 (Read1) @(71,156) /sn:0 /w:[ 0 ]
   //: joint g9 (Read2) @(100, 196) /w:[ 2 -1 1 4 ]
   mux g7 (.I0(Read2), .I1(Write), .S(RegDst), .Z(w6));   //: @(130,232) /sn:0 /R:1 /w:[ 5 1 1 0 ] /ss:0 /do:1
   //: input g12 (WriteData) @(71,303) /sn:0 /w:[ 0 ]
-  //: output g14 (SignExtOut) @(333,483) /sn:0 /w:[ 1 ]
+  //: output g14 (SignExtOut) @(349,391) /sn:0 /w:[ 1 ]
   //: input g11 (RegDst) @(72,274) /sn:0 /w:[ 0 ]
   //: output g5 (Data2) @(350,263) /sn:0 /w:[ 1 ]
-  SignExtend g15 (.Inm16(SignExtIn), .Inm32(SignExtOut));   //: @(165, 460) /sz:(148, 40) /sn:0 /p:[ Li0>1 Ro0<0 ]
+  SignExtend g15 (.Inm16(SignExtIn), .Inm32(SignExtOut));   //: @(181, 368) /sz:(148, 40) /sn:0 /p:[ Li0>1 Ro0<0 ]
   BRegs32x32 g0 (.clr(clr), .Read1(Read1), .Read2(Read2), .Write(w6), .WriteData(WriteData), .clk(clk), .RegWrite(RegWrite), .Data1(Data1), .Data2(Data2));   //: @(175, 124) /sz:(147, 182) /sn:0 /p:[ Ti0>1 Li0>1 Li1>3 Li2>1 Li3>1 Bi0>1 Bi1>1 Ro0<0 Ro1<0 ]
-  //: input g13 (SignExtIn) @(120,484) /sn:0 /w:[ 0 ]
+  //: input g13 (SignExtIn) @(136,392) /sn:0 /w:[ 0 ]
 
 endmodule
 
@@ -968,7 +968,7 @@ input clk;    //: /sn:0 {0}(381,447)(449,447)(449,427){1}
   //: input g1 (Reset) @(379,328) /sn:0 /w:[ 0 ]
   rom fetch_rom (.A(PCNext), .D(Inst), .OE(w6));   //: @(521,388) /sn:0 /w:[ 3 1 1 ] /mem:"/media/sf_URV/EC/Practica2_EstructuraComputadors/FILES/mult.mem"
   //: output g12 (Inst) @(591,387) /sn:0 /w:[ 0 ]
-  register g5 (.Q(PCNext), .D(PCNew), .EN(w0), .CLR(!Reset), .CK(!clk));   //: @(449,389) /sn:0 /R:1 /w:[ 5 1 1 1 1 ]
+  register g5 (.Q(PCNext), .D(PCNew), .EN(w0), .CLR(!Reset), .CK(clk));   //: @(449,389) /sn:0 /R:1 /w:[ 5 1 1 1 1 ]
   //: supply0 g11 (w6) @(521,443) /sn:0 /w:[ 0 ]
   //: joint g0 (PCNext) @(493, 389) /w:[ 2 1 4 -1 ]
   //: output g13 (PCNext) @(601,336) /sn:0 /w:[ 0 ]
@@ -1102,7 +1102,7 @@ wire [3:0] w26;    //: /sn:0 /dp:1 {0}(849,-2)(1033,-2)(1033,189){1}
   //: comment g74 /dolink:0 /link:"" @(662,336) /sn:0
   //: /line:"rd"
   //: /end
-  clock g1 (.Z(w0));   //: @(179,318) /sn:0 /w:[ 5 ] /omega:500 /phi:0 /duty:50
+  clock g1 (.Z(w0));   //: @(179,318) /sn:0 /w:[ 5 ] /omega:3000 /phi:0 /duty:50
   //: joint g24 (Data2) @(865, 291) /w:[ 4 -1 6 3 ]
   //: comment g77 /dolink:0 /link:"" @(445,367) /sn:0
   //: /line:"Inm16"
